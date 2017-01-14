@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Tally" representedClassName="Tally" syncable="YES" codeGenerationType="class">
+        <attribute name="expenses" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="flag" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="income" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="dateship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TallyDate" inverseName="tallyship" inverseEntity="TallyDate" syncable="YES"/>
+        <relationship name="typeship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TallyType" inverseName="tallyship" inverseEntity="TallyType" syncable="YES"/>
+        <relationship name="usership" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="tallyship" inverseEntity="Users" syncable="YES"/>
+    </entity>
+    <entity name="TallyDate" representedClassName="TallyDate" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tallyship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tally" inverseName="dateship" inverseEntity="Tally" syncable="YES"/>
+    </entity>
+    <entity name="TallyType" representedClassName="TallyType" syncable="YES" codeGenerationType="class">
+        <attribute name="typeicon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typename" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tallyship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tally" inverseName="typeship" inverseEntity="Tally" syncable="YES"/>
+    </entity>
+    <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tallyship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tally" inverseName="usership" inverseEntity="Tally" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Tally" positionX="-396" positionY="102" width="128" height="165"/>
+        <element name="TallyDate" positionX="-594" positionY="99" width="128" height="73"/>
+        <element name="TallyType" positionX="-234" positionY="99" width="128" height="90"/>
+        <element name="Users" positionX="-594" positionY="198" width="128" height="73"/>
+    </elements>
+</model>
